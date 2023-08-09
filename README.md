@@ -66,7 +66,7 @@ Clique [aqui](https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro) 
 
     ![Alt text](./src/images/images-readme/image-6.png)
 
--   Dentro de `src`:
+-   Dentro de `src`:<br>
     ![Alt text](./src/images/images-readme/image-7.png)
 
 -   Em `App.js`, excluir as importações e limpar conteúdo:
@@ -86,7 +86,7 @@ Clique [aqui](https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro) 
 -   Dentro de `src` criei uma pasta `pages`, e cada página tem sua pasta e um arquivo `index.js`.
     ![Alt text](./src/images/images-readme/image-12.png)
 
--   Importante notar que `pages` possui seu próprio arquivo `index.js`, utilizado para fazer importações em um só lugar:
+-   Importante notar que `pages` possui seu próprio arquivo `index.js`, utilizado para fazer importações em um só lugar:<br>
     ![Alt text](./src/images/images-readme/image-13.png)
 
     -   O arquivo `index.js` de `pages` possui a seguinte estrutura:
