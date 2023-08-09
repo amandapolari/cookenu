@@ -9,7 +9,7 @@
 -   [5. Configurações: Create React App](#5-configurações-create-react-app)
 -   [6. Organização de pastas](#6-organização-de-pastas)
 -   [7. Roteamento](#7-roteamento)
--   [8. Constants, Chakra-UI e Header](#8-constants-chakra-ui-e-header)
+-   [8. Constants, Chakra-UI, Styled Components e Header](#8-constants-chakra-ui-styled-components-e-header)
 
 ## 1. Resumo do Projeto
 
@@ -185,4 +185,111 @@ Clique [aqui](https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro) 
     };
     ```
 
-## 8. Constants, Chakra-UI e Header
+## 8. Constants, Chakra-UI, Styled Components e Header
+
+### Instalações:
+
+    -   `styled-components` :
+        ```
+        npm install styled-components@latest
+        ```
+    -   `chakra-ui` :
+
+        ```
+        npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+        ```
+
+### Setup do `chakra-ui`:
+
+    -   No `App.js`:
+
+        -   Importar o `ChakraProvider`:
+            ```
+            import { ChakraProvider } from '@chakra-ui/react'
+            ```
+        -   Englobar todo meu conteúdo com o `ChakraProvider`:
+
+            ```
+            (...)
+            const App = () => {
+                return (
+                    <ChakraProvider>
+                        <Router />
+                    </ChakraProvider>
+                );
+            };
+            (...)
+            ```
+
+    -   Para utilizar os temas do `chakra-ui`, criei uma pasta `styles` dentro de `src`. E dentro dessa pasta um arquivo chamado `index.js` e um arquivo chamado `theme.js`
+
+        -   Conteúdo do `index.js`:
+
+            ```
+            export * from './theme';
+            ```
+
+        -   Para customizar o tema verifiquei nessa [documentação](https://chakra-ui.com/docs/styled-system/customize-theme) o procedimento:
+
+            ```
+            // 1. Import `extendTheme`
+            import { extendTheme } from "@chakra-ui/react"
+
+            // 2. Call `extendTheme` and pass your custom values
+            const theme = extendTheme({
+            colors: {
+                brand: {
+                100: "#f7fafc",
+                // ...
+                900: "#1a202c",
+                },
+            },
+            })
+
+            // 3. Pass the new theme to `ChakraProvider`
+            <ChakraProvider theme={theme}>
+            <App />
+            </ChakraProvider>
+
+            // 4. Now you can use these colors in your components
+            function Usage() {
+            return <Box bg="brand.100">Welcome</Box>
+            }
+            ```
+
+        -   Conteúdo de `theme.js`:
+
+            ```
+            import { extendTheme } from '@chakra-ui/react';
+
+            export const theme = extendTheme({
+                // colors: {
+                //     brand: {
+                //         100: '#f7fafc',
+                //         // ...
+                //         900: '#1a202c',
+                //     },
+                // },
+            });
+            ```
+
+            -   Passar o tema para o provider:
+
+                Em `App.js` faço a importação e passo por props o `theme` para o `ChakraProvider`
+
+                    ```
+                    (...)
+                    import { theme } from './styles';
+                    const App = () => {
+                        return (
+                            <ChakraProvider theme={theme}>
+                                <Router />
+                            </ChakraProvider>
+                        );
+                    };
+                    (...)
+                    ```
+
+### Constants:
+
+-   Dentro de `src` criar uma pasta chamada `constants` e dentro dela um arquivo chamado `index.js`
