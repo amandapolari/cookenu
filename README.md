@@ -112,6 +112,12 @@ Clique [aqui](https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro) 
 
 ## 7. Roteamento
 
+-   Como o react router é uma biblioteca, precisamos fazer a instalação com o seguinte comando:
+
+    ```
+    npm install react-router-dom
+    ```
+
 -   Dentro da `src` criei uma pasta chamada `routes` e dentro dela um arquivo chamado `router.js`, dentro desse arquivo o seguinte código:
 
     ```
