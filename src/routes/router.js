@@ -6,10 +6,12 @@ import {
     RecipeDetailPage,
     AddRecipePage,
 } from '../pages';
+import { Header } from '../components/header';
 
 export const Router = () => {
     return (
         <BrowserRouter>
+            <Header />
             <Routes>
                 <Route path="/add-recipe" element={<AddRecipePage />} />
                 <Route path="/feed" element={<FeedPage />} />

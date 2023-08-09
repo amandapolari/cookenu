@@ -12,6 +12,7 @@
 -   [8. Styled Components](#8-styled-components)
 -   [9. Chakra-UI](#9-chakra-ui)
 -   [10. Constants](#10-constants)
+-   [11. Header](#11-header)
 
 ## 1. Resumo do Projeto
 
@@ -296,4 +297,89 @@ Dentro de `src` criar uma pasta chamada `constants` e dentro dela um arquivo cha
 
 ```
 export const BASE_URL = 'https://api-cookenu.onrender.com';
+```
+
+## 11. Header
+
+### Chamado do Header
+
+Como o `Header` é comum em todas as páginas, por isso irei colocar o Header dentro de `router.js` para que o código não seja repetido. Porque coisas que não são dependentes de rotas mas estiverem **dentro** de `<BrowserRouter>` serão renderizadas _sempre_!
+
+Por isso o `Header` será chamado aqui:
+![Localização Header](./src/images/images-readme/image-15.png)
+
+### Criação do Header
+
+Em `src` criei uma pasta `components` que vai armazenar os componentes comum da aplicação, ou seja, componentes que não dependerem de uma página só e sim serão divididos entre todos.
+
+Dentro de `components` criei um `index.js` e uma pasta para cada componente
+
+No `index.js` de `components` tenho a seguinte exportação:
+
+```
+export * from './header';
+```
+
+E em `header` irei criar o componente normalmente e depois importar no `Router`
+
+Código do `index.js` de `header`:
+
+```
+import { HeaderStyled } from './styled';
+import { Button } from '@chakra-ui/react';
+
+export const Header = () => {
+    return (
+        <HeaderStyled>
+            <Button variant="header">Cookenu</Button>
+            <Button variant="header">Login</Button>
+        </HeaderStyled>
+    );
+};
+```
+
+Código do `styled.js` de `header`:
+
+```
+import styled from 'styled-components';
+import { theme } from '../../styles/theme';
+
+export const HeaderStyled = styled.div`
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: ${theme.colors.laranja['500']};
+`;
+```
+
+### Configurações do `theme.js` da pasta `styles` que foi utilizada no `Header`:
+
+```
+import { extendTheme } from '@chakra-ui/react';
+
+export const theme = extendTheme({
+    components: {
+        Button: {
+            variants: {
+                header: {
+                    _hover: {
+                        bg: 'yellow.500',
+                        transition: 'bg 0.3s ease-in-out',
+                    },
+                },
+            },
+        },
+    },
+    colors: {
+        laranja: {
+            500: '#FE7E02',
+        },
+        yellow: {
+            500: '#f9b24e',
+        },
+    },
+});
 ```
