@@ -1,70 +1,182 @@
-# Getting Started with Create React App
+# Projeto Cookenu
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Processo de Desenvolvimento
 
-## Available Scripts
+-   [1. Resumo do Projeto](#1-resumo-do-projeto)
+-   [2. Fluxograma de Telas](#2-fluxograma-de-telas)
+-   [3. Wireframe de Telas](#3-wireframe-de-telas)
+-   [4. API utilizada](#4-api-utilizada)
+-   [5. Configurações: Create React App](#5-configurações-create-react-app)
+-   [6. Organização de pastas](#6-organização-de-pastas)
+-   [7. Roteamento](#7-roteamento)
+-   [8. Constants, Chakra-UI e Header](#8-constants-chakra-ui-e-header)
 
-In the project directory, you can run:
+## 1. Resumo do Projeto
 
-### `npm start`
+-   Cookenu é um projeto de revisão do módulo de react com APIs, design systems e routes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   A aplicação consiste em um site de receitas com as seguintes telas:
+    -   Login
+    -   Cadastro
+    -   Lista de Receitas
+    -   Detalhes da Receita
+    -   Adicionar Receita
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 2. Fluxograma de Telas
 
-### `npm test`
+![Fluxograma de Telas](./src/images/images-readme/image-0.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 3. Wireframe de Telas
 
-### `npm run build`
+### Tela - Login:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Tela - Login](./src/images/images-readme/image-1.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Tela - Cadastro:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Tela - Cadastro](./src/images/images-readme/image-2.png)
 
-### `npm run eject`
+### Tela - Lista de Receitas:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Alt text](./src/images/images-readme/image-3.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Tela - Detalhes da Receita:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Alt text](./src/images/images-readme/image-4.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Tela - Adicionar Receita:
 
-## Learn More
+![Alt text](./src/images/images-readme/image-5.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 4. API utilizada:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clique [aqui](https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro) para ser direcionado para a documentação da API Cookenu utilizada no projeto
 
-### Code Splitting
+## 5. Configurações: Create React App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-   Para criar um projeto React com CRA utilizei o comando:
 
-### Analyzing the Bundle Size
+    ```
+    npx create-react-app cookenu
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### O que pode remover após a criação do projeto react:
 
-### Making a Progressive Web App
+-   Dentro da pasta `cookenu`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    ![Alt text](./src/images/images-readme/image-6.png)
 
-### Advanced Configuration
+-   Dentro de `src`:
+    ![Alt text](./src/images/images-readme/image-7.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+-   Em `App.js`, excluir as importações e limpar conteúdo:
+    ![Alt text](./src/images/images-readme/image-8.png)
 
-### Deployment
+    ![Alt text](./src/images/images-readme/image-9.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+-   No `index.js` presente dentro da `src`, limpar importações:
+    ![Alt text](./src/images/images-readme/image-10.png)
+    ![Alt text](./src/images/images-readme/image-11.png)
 
-### `npm run build` fails to minify
+-   Em `package.json` excluir as bibliotecas que não estão mais sendo usadas:
+    ![Alt text](./src/images/images-readme/image-14.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 6. Organização de pastas
+
+-   Dentro de `src` criei uma pasta `pages`, e cada página tem sua pasta e um arquivo `index.js`.
+    ![Alt text](./src/images/images-readme/image-12.png)
+
+-   Importante notar que `pages` possui seu próprio arquivo `index.js`, utilizado para fazer importações em um só lugar:
+    ![Alt text](./src/images/images-readme/image-13.png)
+
+    -   O arquivo `index.js` de `pages` possui a seguinte estrutura:
+
+        ```
+        export * from './add-recipe';
+        export * from './feed';
+        export * from './login';
+        export * from './recipe-detail';
+        export * from './signup';
+        ```
+
+    -   Dessa forma quando eu chamar qualquer página, posso refenciar o `index.js` de `pages`:
+        ```
+        import {
+            LoginPage,
+            SignupPage,
+            FeedPage,
+            RecipeDetailPage,
+            AddRecipePage,
+        } from '../pages';
+        ```
+
+## 7. Roteamento
+
+-   Dentro da `src` criei uma pasta chamada `routes` e dentro dela um arquivo chamado `router.js`, dentro desse arquivo o seguinte código:
+
+    ```
+    import { BrowserRouter, Routes, Route } from 'react-router-dom';
+    import {
+        LoginPage,
+        SignupPage,
+        FeedPage,
+        RecipeDetailPage,
+        AddRecipePage,
+    } from '../pages';
+
+    export const Router = () => {
+        return (
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/add-recipe" element={<AddRecipePage />} />
+                    <Route path="/feed" element={<FeedPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/recipe/:id" element={<RecipeDetailPage />} />
+                    <Route path="/signup" element={<SignupPage />} />
+                </Routes>
+            </BrowserRouter>
+        );
+    };
+    ```
+
+-   Com as rotas criadas, é necessário chama-la no `App.js` da seguinte forma:
+
+    ```
+    import { Router } from './routes';
+
+    const App = () => {
+        return (
+            <Router />
+        );
+    };
+
+    export default App;
+    ```
+
+    -   A partir desse momento é possível testar as rotas mudando a URL e verificar se o que tem em cada página está aparecendo de forma correta.
+
+-   Ainda dentro da pasta `routes`, criei um arquivo chamado `coordinator.js` responsável por armazenar as funções que irão fazer a troca de páginas, segue o código do `coordinator.js`:
+
+    ```
+    export const goToLoginPage = (navigator) => {
+        navigator('/login');
+    };
+
+    export const goToSignupPage = (navigator) => {
+        navigator('/signup');
+    };
+
+    export const goToFeedPage = (navigator) => {
+        navigator('/feed');
+    };
+
+    export const goToRecipeDetailPage = (navigator, id) => {
+        navigator(`/recipe/:${id}`);
+    };
+
+    export const goToAddRecipePage = (navigator) => {
+        navigator('/add-recipe');
+    };
+    ```
+
+## 8. Constants, Chakra-UI e Header
