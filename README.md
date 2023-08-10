@@ -13,6 +13,7 @@
 -   [9. Chakra-UI](#9-chakra-ui)
 -   [10. Constants](#10-constants)
 -   [11. Header](#11-header)
+-   [12. Página de Login](#12-página-de-login)
 
 ## 1. Resumo do Projeto
 
@@ -383,3 +384,145 @@ export const theme = extendTheme({
     },
 });
 ```
+
+## 12. Página de Login
+
+-   Realizei alguns ajustes na estilização para o formulário:
+
+    -   Em `theme.js`, criei outras `variants`, uma chamada `form` e outra chamada `logo`:
+
+    ```
+    (...)
+    form: {
+            bg: 'yellow.500',
+            width: '100%',
+            _hover: {
+                bg: 'laranja.500',
+                transition: 'bg 0.3s ease-in-out',
+            },
+        },
+    logo: {
+            bg: 'none',
+            _hover: {
+                bg: 'none',
+            },
+        },
+    (...)
+    ```
+
+-   Também criei componentes de estilização através do `styled-components` para utilizar no form:
+
+    ```
+    import styled from 'styled-components';
+
+    export const LoginPageContainer = styled.div`
+        height: 90vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: lightgrey;
+    `;
+
+    export const FormContainer = styled.div`
+        width: 40vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        input, p {
+            margin-bottom: 10px;
+        }
+    `;
+    ```
+
+-   Utilizei o hook `useForm` para fazer o controle dos inputs:
+
+    ```
+    import { useState } from 'react';
+
+    export const useForm = (initialState) => {
+        const [form, setForm] = useState(initialState);
+
+        const onChangeInputs = (event) => {
+            const { name, value } = event.target;
+            setForm({ ...form, [name]: value });
+        };
+
+        const clearInputs = () => {
+            setForm(initialState);
+        };
+
+        return [form, onChangeInputs, clearInputs];
+    };
+    ```
+
+-   Por fim, importei formulários do `Chakra-UI` e o adaptei para a minha necessidade.
+
+    ```
+    const [form, onChangeInputs, clearInputs] = useForm({
+            email: '',
+            senha: '',
+        });
+
+        const [isEmailValid, setIsEmailValid] = useState(true);
+        const [isPasswordValid, setIsPasswordValid] = useState(true);
+        const [messageEmail, setMessageEmail] = useState('');
+        const [messagePassword, setMessagePassword] = useState('');
+
+        useEffect(() => {
+            if (form.email || form.senha) {
+                if (form.senha === '') {
+                    setIsEmailValid(
+                        /[a-zA-Z0-9]+@[a-z]{3}[.a-z]?/.test(form.email)
+                    );
+                    setMessageEmail('Por favor, digite um e-mail válido');
+                }
+                if (form.senha !== '') {
+                    setIsPasswordValid(
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=])(?!.*\s).{8,}$/.test(
+                            form.senha
+                        )
+                    );
+                    setMessagePassword(
+                        'Sua senha precisa de ao menos uma letra maiúscula, uma letra minúscula, um caracter especial e um número.'
+                    );
+                }
+            }
+        }, [form.email, form.senha]);
+
+        const [show, setShow] = useState(false);
+        const handleClick = () => setShow(!show);
+
+        const onSubmit = (e) => {
+            e.preventDefault();
+            console.log(form);
+
+            setIsEmailValid(/[a-zA-Z0-9]+@[a-z]{3}[.a-z]?/.test(form.email));
+            setMessageEmail('Por favor, digite um e-mail válido');
+            setIsPasswordValid(
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=])(?!.*\s).{8,}$/.test(
+                    form.senha
+                )
+            );
+            setMessagePassword(
+                'Sua senha precisa de ao menos uma letra maiúscula, uma letra minúscula, um caracter especial e um número.'
+            );
+            if (isEmailValid === true && isPasswordValid === true) {
+                clearInputs();
+            }
+        };
+    ```
+
+-   Além disso utilizei a biblioteca [React Icons](https://react-icons.github.io/react-icons/icons?name=fa):
+    -   Para instalar:
+    ```
+    https://react-icons.github.io/react-icons/
+    ```
+    -   Depois importantei o nome do componente e utilizei na visualização da senha:
+    ```
+    import { IconName } from "react-icons/fa";
+    ```
+
