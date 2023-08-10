@@ -10,6 +10,20 @@ export const theme = extendTheme({
                         transition: 'bg 0.3s ease-in-out',
                     },
                 },
+                form: {
+                    bg: 'yellow.500',
+                    width: '100%',
+                    _hover: {
+                        bg: 'laranja.500',
+                        transition: 'bg 0.3s ease-in-out',
+                    },
+                },
+                logo: {
+                    bg: 'none',
+                    _hover: {
+                        bg: 'none',
+                    },
+                },
             },
         },
     },
