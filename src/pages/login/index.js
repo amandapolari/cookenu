@@ -137,11 +137,19 @@ export const LoginPage = () => {
                             ''
                         )}
                     </FormControl>
-                    <Button type="submit" variant="form">
+                    <Button color="cinza.500" type="submit" variant="form">
                         Enviar
                     </Button>
                     <Center>
-                        <Button variant="link">
+                        <Button
+                            variant="link"
+                            color="yellow.500"
+                            _hover={{
+                                color: 'laranja.500',
+                                transition: 'background 0.3s ease-in-out',
+                                textDecoration: 'underline',
+                            }}
+                        >
                             Não tem cadastro? Cadastre-se!
                         </Button>
                     </Center>

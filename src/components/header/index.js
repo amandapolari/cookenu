@@ -9,7 +9,9 @@ export const Header = () => {
             <Button variant="logo">
                 <img alt="logo" src={images.logo} />
             </Button>
-            <Button variant="header">Login</Button>
+            <Button color="cinza.500" variant="header">
+                Login
+            </Button>
         </HeaderStyled>
     );
 };
