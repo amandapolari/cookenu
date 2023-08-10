@@ -34,5 +34,8 @@ export const theme = extendTheme({
         yellow: {
             500: '#f9b24e',
         },
+        cinza: {
+            500: '#45525B',
+        },
     },
 });

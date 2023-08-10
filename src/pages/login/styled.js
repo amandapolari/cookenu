@@ -10,14 +10,20 @@ export const LoginPageContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
-    width: 40vw;
+    min-width: 30vw;
+    max-width: 80vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
-    input, p {
+    input,
+    p,
+    button {
         margin-bottom: 10px;
+    }
+    #icon {
+        margin-bottom: 0;
     }
 `;

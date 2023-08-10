@@ -11,9 +11,11 @@ import {
     InputGroup,
     InputRightElement,
     Center,
+    Image,
 } from '@chakra-ui/react';
 
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import images from '../../assets/importImages';
 
 export const LoginPage = () => {
     const [form, onChangeInputs, clearInputs] = useForm({
@@ -75,7 +77,22 @@ export const LoginPage = () => {
                 <form onSubmit={onSubmit}>
                     <FormControl isInvalid={!isEmailValid}>
                         <Center>
-                            <FormLabel>LOGIN</FormLabel>
+                            <FormLabel
+                                fontFamily="Lobster, cursive"
+                                fontSize="3em"
+                                color="cinza.500"
+                                // w="100%"
+                                direction="collumn"
+                                // border="2px"
+                                // borderColor="gray.200"
+                            >
+                                Login{' '}
+                            </FormLabel>
+                            <Image
+                                boxSize="6.5vh"
+                                alt="logo cinza"
+                                src={images.logoCinza}
+                            />
                         </Center>
                         <Input
                             name="email"
@@ -103,10 +120,9 @@ export const LoginPage = () => {
                             />
                             <InputRightElement width="4.5rem">
                                 <Button
+                                    id="icon"
                                     bg="none"
                                     _hover={{ bg: 'none' }}
-                                    h="1.75rem"
-                                    size="sm"
                                     onClick={handleClick}
                                 >
                                     {show ? <FaEyeSlash /> : <FaEye />}
@@ -124,6 +140,11 @@ export const LoginPage = () => {
                     <Button type="submit" variant="form">
                         Enviar
                     </Button>
+                    <Center>
+                        <Button variant="link">
+                            Não tem cadastro? Cadastre-se!
+                        </Button>
+                    </Center>
                 </form>
             </FormContainer>
         </LoginPageContainer>
