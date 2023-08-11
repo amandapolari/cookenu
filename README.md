@@ -542,3 +542,86 @@ export const theme = extendTheme({
 -   Também passei as funções de regex para dentro da pastaas `constants` e chamei nas páginas quando necessário
 
 ## 14. Axios
+
+Para utilizar o `axios` é preciso instalar:
+
+```
+npm i axios
+```
+
+Em `constants` criei as funções que fazem as requisições:
+
+```
+// REQUESTS API COOKENU:
+export const BASE_URL = 'https://api-cookenu.onrender.com';
+
+export const Login = async (body) => {
+    const { data } = await axios.post(`${BASE_URL}/user/login`, body);
+    return data;
+};
+
+export const Signup = async (body) => {
+    const { data } = await axios.post(`${BASE_URL}/user/signup`, body);
+    return data;
+};
+// -----------------
+```
+
+Transformei a função de `onSubmit` da página de login e da página de cadastro em funções assíncronas e fiz as requisições passandoa s informações fornecidas pelo usuário:
+
+### Login
+
+```
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        console.log(form);
+        setIsEmailValid(validateEmail(form.email));
+        setIsPasswordValid(validatePassword(form.senha));
+        if (isEmailValid === true && isPasswordValid === true) {
+            clearInputs();
+        }
+        try {
+            const { token } =
+                isEmailValid &&
+                isPasswordValid &&
+                (await Login({
+                    email: form.email,
+                    password: form.senha,
+                }));
+            localStorage.setItem('cookenu.token', token);
+            goToFeedPage(navigator);
+        } catch (e) {
+            console.log(e.response.data.message);
+        }
+    };
+```
+
+### Signup
+
+```
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        console.log(form);
+        setIsEmailValid(validateEmail(form.email));
+        setIsPasswordValid(validatePassword(form.senha));
+        setIsNameValid(validateName(form.name));
+        if (isEmailValid === true && isPasswordValid === true) {
+            clearInputs();
+        }
+        try {
+            const { token } =
+                isNameValid &&
+                isEmailValid &&
+                isPasswordValid &&
+                (await Signup({
+                    name: form.name,
+                    email: form.email,
+                    password: form.senha,
+                }));
+            localStorage.setItem('cookenu.token', token);
+            goToFeedPage(navigator);
+        } catch (e) {
+            alert(e.response.data.message);
+        }
+    };
+```

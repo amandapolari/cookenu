@@ -9,7 +9,14 @@ import {
 } from '../../components';
 
 import { Button, Center, FormLabel } from '@chakra-ui/react';
-import { validateEmail, validatePassword, validateName } from '../../constants';
+import {
+    validateEmail,
+    validatePassword,
+    validateName,
+    Signup,
+} from '../../constants';
+import { goToFeedPage } from '../../routes/coordinator';
+import { useNavigate } from 'react-router-dom';
 
 export const SignupPage = () => {
     const [form, onChangeInputs, clearInputs] = useForm({
@@ -21,6 +28,8 @@ export const SignupPage = () => {
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
     const [isNameValid, setIsNameValid] = useState(true);
+
+    const navigator = useNavigate();
 
     useEffect(() => {
         if (form.email) {
@@ -40,7 +49,7 @@ export const SignupPage = () => {
         }
     }, [form.name]);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         console.log(form);
         setIsEmailValid(validateEmail(form.email));
@@ -48,6 +57,21 @@ export const SignupPage = () => {
         setIsNameValid(validateName(form.name));
         if (isEmailValid === true && isPasswordValid === true) {
             clearInputs();
+        }
+        try {
+            const { token } =
+                isNameValid &&
+                isEmailValid &&
+                isPasswordValid &&
+                (await Signup({
+                    name: form.name,
+                    email: form.email,
+                    password: form.senha,
+                }));
+            localStorage.setItem('cookenu.token', token);
+            goToFeedPage(navigator);
+        } catch (e) {
+            alert(e.response.data.message);
         }
     };
 

@@ -7,18 +7,13 @@ import {
     PasswordInput,
 } from '../../components';
 
-import {
-    goToSignupPage,
-    // goToFeedPage,
-    // goToLoginPage,
-    // goToAddRecipePage,
-    // goToRecipeDetailPage,
-    // goToSignupPage,
-} from '../../routes/coordinator';
+import { goToSignupPage, goToFeedPage } from '../../routes/coordinator';
 
 import { Button, Center, FormLabel } from '@chakra-ui/react';
 import { validateEmail, validatePassword } from '../../constants';
 import { useNavigate } from 'react-router-dom';
+
+import { Login } from '../../constants';
 
 export const LoginPage = () => {
     const [form, onChangeInputs, clearInputs] = useForm({
@@ -43,13 +38,26 @@ export const LoginPage = () => {
         }
     }, [form.senha]);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         console.log(form);
         setIsEmailValid(validateEmail(form.email));
         setIsPasswordValid(validatePassword(form.senha));
         if (isEmailValid === true && isPasswordValid === true) {
             clearInputs();
+        }
+        try {
+            const { token } =
+                isEmailValid &&
+                isPasswordValid &&
+                (await Login({
+                    email: form.email,
+                    password: form.senha,
+                }));
+            localStorage.setItem('cookenu.token', token);
+            goToFeedPage(navigator);
+        } catch (e) {
+            console.log(e.response.data.message);
         }
     };
 
