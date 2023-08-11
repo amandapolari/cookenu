@@ -6,10 +6,18 @@ export const Header = () => {
     return (
         <HeaderStyled>
             {/* <Button variant="header">Cookenu</Button> */}
-            <Button variant="logo">
+            <Button variant="logo" p="5vh">
                 <img alt="logo" src={images.logo} />
             </Button>
-            <Button color="cinza.500" variant="header">
+            <Button
+                p="5vh"
+                fontSize="3vh"
+                color="cinza.500"
+                variant="link"
+                _hover={{
+                    textDecoration: 'underline',
+                }}
+            >
                 Login
             </Button>
         </HeaderStyled>
