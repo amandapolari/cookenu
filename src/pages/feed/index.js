@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { FeedContainerStyled, ImgRecipe, RecipeCardStyled } from './style';
 import { ListRecipes } from '../../constants';
 import { useNavigate } from 'react-router-dom';
-import { goToRecipeDetailPage } from '../../routes/coordinator';
+import {
+    goToRecipeDetailPage,
+    goToAddRecipePage,
+} from '../../routes/coordinator';
 import { Button } from '@chakra-ui/react';
 
 export const FeedPage = () => {
@@ -39,7 +42,14 @@ export const FeedPage = () => {
                     <h3>{recipe.title}</h3>
                 </RecipeCardStyled>
             ))}
-            <Button variant="add">+</Button>
+            <Button
+                variant="add"
+                onClick={() => {
+                    goToAddRecipePage(navigator);
+                }}
+            >
+                +
+            </Button>
         </FeedContainerStyled>
     );
 };

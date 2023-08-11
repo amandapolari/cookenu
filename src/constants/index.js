@@ -22,6 +22,17 @@ export const ListRecipes = async () => {
     return data;
 };
 
+export const AddRecipe = async (body) => {
+    //uso pra ver o que o método post recebe
+    // axios.post()
+    const { data } = await axios.post(`${BASE_URL}/recipe`, body, {
+        headers: {
+            Authorization: localStorage.getItem('cookenu.token'),
+        },
+    });
+    return data;
+};
+
 // -----------------
 
 // VALIDATIONS REGEX:
@@ -32,4 +43,8 @@ export const validatePassword = (senha) =>
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=])(?!.*\s).{8,}$/.test(senha);
 
 export const validateName = (name) => /.{2,}/.test(name);
+
+export const validateTitle = (title) => /.{3,}/.test(title);
+
+export const validateUrl = (url) => /https[s]?:\/\/[a-zA-Z]+.com/.test(url);
 // -----------------
