@@ -12,6 +12,16 @@ export const Signup = async (body) => {
     const { data } = await axios.post(`${BASE_URL}/user/signup`, body);
     return data;
 };
+
+export const ListRecipes = async () => {
+    const { data } = await axios.get(`${BASE_URL}/recipe/all`, {
+        headers: {
+            Authorization: localStorage.getItem('cookenu.token'),
+        },
+    });
+    return data;
+};
+
 // -----------------
 
 // VALIDATIONS REGEX:

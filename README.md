@@ -16,6 +16,7 @@
 -   [12. Página de Login](#12-página-de-login)
 -   [13. Componentização](#13-componentização)
 -   [14. Axios](#14-axios)
+-   [15. Feed de Receitas](#15-feed-de-receitas)
 
 ## 1. Resumo do Projeto
 
@@ -625,3 +626,131 @@ Transformei a função de `onSubmit` da página de login e da página de cadastr
         }
     };
 ```
+
+## 15. Feed de Receitas
+
+Em `constants` adicionei uma função para pegar todas as receitas:
+
+```
+export const ListRecipes = async () => {
+    const { data } = await axios.get(`${BASE_URL}/recipe/all`, {
+        headers: {
+            Authorization: localStorage.getItem('cookenu.token'),
+        },
+    });
+    return data;
+};
+```
+
+Em seguida reestruturei a página de feed, importando a função que faz a requisição no momento em que essa página é carregada:
+
+```
+import { useEffect, useState } from 'react';
+import { FeedContainerStyled, ImgRecipe, RecipeCardStyled } from './style';
+import { ListRecipes } from '../../constants';
+import { useNavigate } from 'react-router-dom';
+import { goToRecipeDetailPage } from '../../routes/coordinator';
+import { Button } from '@chakra-ui/react';
+
+export const FeedPage = () => {
+    const navigator = useNavigate();
+    const [recipes, setRecipes] = useState([]);
+
+    useEffect(() => {
+        ListRecipes()
+            .then((data) => {
+                setRecipes(data);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }, []);
+
+    return (
+        <FeedContainerStyled>
+            {recipes.slice(0, 9).map((recipe, i) => (
+                <RecipeCardStyled
+                    onClick={() => {
+                        goToRecipeDetailPage(navigator, recipe.id);
+                    }}
+                    key={i}
+                >
+                    <ImgRecipe
+                        alt="imagem da receita"
+                        src={recipe.imageUrl}
+                        onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = `https://picsum.photos/seed/${i}/200/200`;
+                        }}
+                    />
+                    <h3>{recipe.title}</h3>
+                </RecipeCardStyled>
+            ))}
+            <Button variant="add">+</Button>
+        </FeedContainerStyled>
+    );
+};
+```
+
+-   Criei mais uma variante no `theme`:
+
+    ```
+    (...)
+    add: {
+        bg: 'laranja.500',
+        borderRadius: '50%',
+        fontSize: '4vh',
+        width: '3vw',
+        p: '3vh',
+        position: 'fixed',
+        bottom: '3vh',
+        right: '2vh',
+        _hover: {
+            transform: 'scale(1.05)',
+            transition: '0.5s',
+        },
+    },
+    (...)
+    ```
+
+-   E uma estilização para o feed:
+
+    ```
+    import styled from 'styled-components';
+
+    export const FeedContainerStyled = styled.div`
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 80vw;
+        justify-items: center;
+        grid-gap: 2vh 0;
+        padding: 2vh;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    `;
+
+    export const RecipeCardStyled = styled.div`
+        border: 2px solid black;
+        width: 20vw;
+        transition: 0.5s;
+        &:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+    `;
+
+    export const ImgRecipe = styled.img`
+        padding: 1vh;
+        height: 25vh;
+        border-radius: 10px;
+    `;
+    ```
+
+Observações importantes da página de feed:
+
+-   Entender o processo
+    1. Criar a função que faz a requisição
+    2. Chamar esta função na página onde será usada
+    3. Passar o resultado dessa requisição para um estado
+    4. Renderizar esse estado em um map no return
