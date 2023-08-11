@@ -33,6 +33,15 @@ export const AddRecipe = async (body) => {
     return data;
 };
 
+export const GetRecipe = async (id) => {
+    const { data } = await axios.get(`${BASE_URL}/recipe/${id}`, {
+        headers: {
+            Authorization: localStorage.getItem('cookenu.token'),
+        },
+    });
+    return data;
+};
+
 // -----------------
 
 // VALIDATIONS REGEX:

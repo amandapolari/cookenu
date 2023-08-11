@@ -24,6 +24,7 @@ export const FeedPage = () => {
 
     return (
         <FeedContainerStyled>
+            {/* {recipes.slice(-50).map((recipe, i) => ( */}
             {recipes.slice(0, 9).map((recipe, i) => (
                 <RecipeCardStyled
                     onClick={() => {

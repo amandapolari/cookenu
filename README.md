@@ -899,4 +899,50 @@ export const AddRecipePage = () => {
 
 ## 17. Página de Detalhes
 
+Em `constants` criei a função que faz a requisição dos detalhes da receita:
+
+```
+export const GetRecipe = async (id) => {
+    const { data } = await axios.get(`${BASE_URL}/recipe/${id}`, {
+        headers: {
+            Authorization: localStorage.getItem('cookenu.token'),
+        },
+    });
+    return data;
+};
+```
+
+Fiz a chamada da requisição na página de detalhes:
+
+```
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { GetRecipe } from '../../constants';
+
+export const RecipeDetailPage = () => {
+    const { id } = useParams();
+    console.log('id url', id);
+
+    const [recipe, setRecipe] = useState();
+
+    useEffect(() => {
+        GetRecipe(id)
+            .then((recipe) => {
+                setRecipe(recipe[0]);
+            })
+            .catch((e) => console.log(e.response.data.message));
+    }, []);
+
+    return !recipe ? (
+        <h1>Não há receitas com esse id</h1>
+    ) : (
+        <>
+            <img alt="img da receita" src={recipe.imageUrl} />
+            <h1>{recipe.title}</h1>
+            <p>{recipe.description}</p>
+        </>
+    );
+};
+```
+
 ## 18. Logout e Proteção de Páginas
