@@ -7,8 +7,18 @@ import {
     PasswordInput,
 } from '../../components';
 
+import {
+    goToSignupPage,
+    // goToFeedPage,
+    // goToLoginPage,
+    // goToAddRecipePage,
+    // goToRecipeDetailPage,
+    // goToSignupPage,
+} from '../../routes/coordinator';
+
 import { Button, Center, FormLabel } from '@chakra-ui/react';
 import { validateEmail, validatePassword } from '../../constants';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
     const [form, onChangeInputs, clearInputs] = useForm({
@@ -18,6 +28,8 @@ export const LoginPage = () => {
 
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
+
+    const navigator = useNavigate();
 
     useEffect(() => {
         if (form.email) {
@@ -71,6 +83,9 @@ export const LoginPage = () => {
                     </Button>
                     <Center>
                         <Button
+                            onClick={() => {
+                                goToSignupPage(navigator);
+                            }}
                             variant="link"
                             color="yellow.500"
                             _hover={{

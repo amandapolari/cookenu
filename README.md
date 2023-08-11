@@ -14,6 +14,8 @@
 -   [10. Constants](#10-constants)
 -   [11. Header](#11-header)
 -   [12. Página de Login](#12-página-de-login)
+-   [13. Componentização](#13-componentização)
+-   [14. Axios](#14-axios)
 
 ## 1. Resumo do Projeto
 
@@ -526,3 +528,17 @@ export const theme = extendTheme({
     import { IconName } from "react-icons/fa";
     ```
 
+## 13. Componentização
+
+-   Reestruturei algumas partes do projeto em componentes, como:
+
+    -   inputs:
+        -   inputs de email
+        -   inputs de nome
+        -   inputs de senha
+
+-   Depois chamei cada componente em sua respectiva página e passei os valores que eram digitados pelo usuário através de props
+
+-   Também passei as funções de regex para dentro da pastaas `constants` e chamei nas páginas quando necessário
+
+## 14. Axios
