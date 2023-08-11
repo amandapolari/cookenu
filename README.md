@@ -946,3 +946,86 @@ export const RecipeDetailPage = () => {
 ```
 
 ## 18. Logout e Proteção de Páginas
+
+### Logout
+
+Para a lógica de Login e Logout:
+
+-   Criei estados nas rotas, que no momento é o pai em comum de todos. Passei por props esses estados para os componentes Login e Header
+
+```
+    (...)
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    (...)
+    <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+    (...)
+    <Route path="/login" element={
+    <LoginPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
+    (...)
+```
+
+Chamei as props em `Header`
+
+```
+(...)
+export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
+(...)
+```
+
+Ainda em `Header` estabeleci a lógica:
+
+```
+(...)
+const buttonAction = () => {
+    if (isLoggedIn) {
+        localStorage.removeItem('cookenu.token');
+        setIsLoggedIn(false);
+    }
+    goToLoginPage(navigator);
+};
+const buttonText = isLoggedIn ? 'Logout' : 'Login';
+(...)
+```
+
+Chamei a função com a lógica e a const que muda o texto no Button do `Header`
+
+```
+<Button
+    onClick={() => {
+        buttonAction();
+    }}
+    p="5vh"
+    fontSize="3vh"
+    color="cinza.500"
+    variant="link"
+    _hover={{
+        textDecoration: 'underline',
+    }}
+>
+    {buttonText}
+</Button>
+```
+
+Agora em `Login`, recebi a prop que seta o estado:
+
+```
+(...)
+export const LoginPage = ({ setIsLoggedIn }) => {
+(...)
+```
+
+E estabeleci que após o Submit bem sucedido eu iria setar o valor de isLogoggedIn:
+
+```
+    (...)
+    const onSubmit = async (e) => {
+    (...)
+        setIsLoggedIn(true);
+        goToFeedPage(navigator);
+    } catch (e) {
+        console.log(e.response.data.message);
+    }
+    (...)
+```
+
+### Proteção de Páginas

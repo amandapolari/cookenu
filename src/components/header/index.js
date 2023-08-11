@@ -10,8 +10,18 @@ import {
     // goToSignupPage,
 } from '../../routes/coordinator';
 
-export const Header = () => {
+export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
     const navigator = useNavigate();
+
+    const buttonAction = () => {
+        if (isLoggedIn) {
+            localStorage.removeItem('cookenu.token');
+            setIsLoggedIn(false);
+        }
+        goToLoginPage(navigator);
+    };
+    const buttonText = isLoggedIn ? 'Logout' : 'Login';
+
     return (
         <HeaderStyled>
             <Button
@@ -25,7 +35,7 @@ export const Header = () => {
             </Button>
             <Button
                 onClick={() => {
-                    goToLoginPage(navigator);
+                    buttonAction();
                 }}
                 p="5vh"
                 fontSize="3vh"
@@ -35,7 +45,7 @@ export const Header = () => {
                     textDecoration: 'underline',
                 }}
             >
-                Login
+                {buttonText}
             </Button>
         </HeaderStyled>
     );

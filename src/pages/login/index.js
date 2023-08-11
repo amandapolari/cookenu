@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Login } from '../../constants';
 
-export const LoginPage = () => {
+export const LoginPage = ({ setIsLoggedIn }) => {
     const [form, onChangeInputs, clearInputs] = useForm({
         email: '',
         senha: '',
@@ -55,6 +55,7 @@ export const LoginPage = () => {
                     password: form.senha,
                 }));
             localStorage.setItem('cookenu.token', token);
+            setIsLoggedIn(true);
             goToFeedPage(navigator);
         } catch (e) {
             console.log(e.response.data.message);
