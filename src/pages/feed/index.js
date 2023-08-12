@@ -7,10 +7,13 @@ import {
     goToAddRecipePage,
 } from '../../routes/coordinator';
 import { Button } from '@chakra-ui/react';
+import { useProtectPage } from '../../hooks';
 
 export const FeedPage = () => {
     const navigator = useNavigate();
     const [recipes, setRecipes] = useState([]);
+
+    useProtectPage(navigator);
 
     useEffect(() => {
         ListRecipes()
@@ -24,7 +27,6 @@ export const FeedPage = () => {
 
     return (
         <FeedContainerStyled>
-            {/* {recipes.slice(-50).map((recipe, i) => ( */}
             {recipes.slice(0, 9).map((recipe, i) => (
                 <RecipeCardStyled
                     onClick={() => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useForm } from '../../hooks';
+import { useForm, useProtectPage } from '../../hooks';
 import {
     CenteredPageContainer,
     FormContainer,
@@ -24,6 +24,8 @@ export const AddRecipePage = () => {
     const [isUrlValid, setIsUrlValid] = useState(true);
 
     const navigator = useNavigate();
+
+    useProtectPage(navigator);
 
     useEffect(() => {
         if (form.title) {

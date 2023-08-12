@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { GetRecipe } from '../../constants';
+import { CenteredPageContainer } from '../../components';
 
 export const RecipeDetailPage = () => {
     const { id } = useParams();
-    console.log('id url', id);
 
     const [recipe, setRecipe] = useState();
 
@@ -17,7 +18,9 @@ export const RecipeDetailPage = () => {
     }, []);
 
     return !recipe ? (
-        <h1>Não há receitas com esse id</h1>
+        <CenteredPageContainer>
+            <h1 >Não há uma descrição desta receita</h1>
+        </CenteredPageContainer>
     ) : (
         <>
             <img alt="img da receita" src={recipe.imageUrl} />

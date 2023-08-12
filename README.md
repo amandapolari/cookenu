@@ -983,7 +983,24 @@ const buttonAction = () => {
     }
     goToLoginPage(navigator);
 };
-const buttonText = isLoggedIn ? 'Logout' : 'Login';
+
+
+(...)
+
+const [buttonText, setButtonText] = useState(
+    isLoggedIn ? 'Logout' : 'Login'
+);
+
+(...)
+
+useEffect(() => {
+    const token = localStorage.getItem('cookenu.token');
+    if (!token) {
+        setButtonText('Login');
+    } else {
+        setButtonText('Logout');
+    }
+}, [isLoggedIn]);
 (...)
 ```
 
@@ -1029,3 +1046,21 @@ E estabeleci que após o Submit bem sucedido eu iria setar o valor de isLogogged
 ```
 
 ### Proteção de Páginas
+
+Para proteger as páginas de usuários não logados, criei o seguinte custom hook:
+
+```
+import { useEffect } from 'react';
+import { goToLoginPage } from '../routes/coordinator';
+
+export const useProtectPage = (navigator) => {
+    useEffect(() => {
+        const token = localStorage.getItem('cookenu.token');
+        if (!token) {
+            goToLoginPage(navigator);
+        }
+    }, [navigator]);
+};
+```
+
+Importei esse hook na página de `feed` e `adicionar receita`

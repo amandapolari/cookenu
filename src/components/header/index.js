@@ -2,16 +2,24 @@ import { HeaderStyled } from './styled';
 import { Button } from '@chakra-ui/react';
 import images from '../../assets/importImages';
 import { useNavigate } from 'react-router-dom';
-import {
-    goToFeedPage,
-    goToLoginPage,
-    // goToAddRecipePage,
-    // goToRecipeDetailPage,
-    // goToSignupPage,
-} from '../../routes/coordinator';
+import { goToFeedPage, goToLoginPage } from '../../routes/coordinator';
+import { useEffect, useState } from 'react';
 
 export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
     const navigator = useNavigate();
+
+    const [buttonText, setButtonText] = useState(
+        isLoggedIn ? 'Logout' : 'Login'
+    );
+
+    useEffect(() => {
+        const token = localStorage.getItem('cookenu.token');
+        if (!token) {
+            setButtonText('Login');
+        } else {
+            setButtonText('Logout');
+        }
+    }, [isLoggedIn]);
 
     const buttonAction = () => {
         if (isLoggedIn) {
@@ -20,7 +28,6 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
         }
         goToLoginPage(navigator);
     };
-    const buttonText = isLoggedIn ? 'Logout' : 'Login';
 
     return (
         <HeaderStyled>
