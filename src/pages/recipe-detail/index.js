@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { GetRecipe } from '../../constants';
 import images from '../../assets/importImages';
 
-import { CenteredPageContainer, Loading } from '../../components';
+import { CenteredPageContainer } from '../../components';
 import {
     CenteredContainer,
     ContainerDescription,
@@ -29,7 +29,7 @@ export const RecipeDetailPage = () => {
             .catch((e) => console.log(e.response.data.message));
     }, []);
 
-    const i = Math.floor(Math.random() * 1000) + 1;
+    // const i = Math.floor(Math.random() * 1000) + 1;
 
     return !recipe ? (
         <CenteredPageContainer>

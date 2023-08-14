@@ -37,6 +37,7 @@ export const GetRecipe = async (id) => {
             Authorization: localStorage.getItem('cookenu.token'),
         },
     });
+    console.log('ANALISAR', response);
     return response;
 };
 
