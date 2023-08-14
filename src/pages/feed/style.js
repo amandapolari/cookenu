@@ -24,6 +24,6 @@ export const RecipeCardStyled = styled.div`
 
 export const ImgRecipe = styled.img`
     padding: 1vh;
-    height: 25vh;
+    height: 35vh;
     border-radius: 10px;
 `;

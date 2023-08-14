@@ -11,7 +11,7 @@ export const goToFeedPage = (navigator) => {
 };
 
 export const goToRecipeDetailPage = (navigator, id) => {
-    navigator(`/recipe/:${id}`);
+    navigator(`/recipe/${id}`);
 };
 
 export const goToAddRecipePage = (navigator) => {

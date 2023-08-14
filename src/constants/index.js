@@ -23,8 +23,6 @@ export const ListRecipes = async () => {
 };
 
 export const AddRecipe = async (body) => {
-    //uso pra ver o que o método post recebe
-    // axios.post()
     const { data } = await axios.post(`${BASE_URL}/recipe`, body, {
         headers: {
             Authorization: localStorage.getItem('cookenu.token'),
@@ -34,12 +32,12 @@ export const AddRecipe = async (body) => {
 };
 
 export const GetRecipe = async (id) => {
-    const { data } = await axios.get(`${BASE_URL}/recipe/${id}`, {
+    const response = await axios.get(`${BASE_URL}/recipe/${id}`, {
         headers: {
             Authorization: localStorage.getItem('cookenu.token'),
         },
     });
-    return data;
+    return response;
 };
 
 // -----------------

@@ -8,6 +8,7 @@ import {
 } from '../../routes/coordinator';
 import { Button } from '@chakra-ui/react';
 import { useProtectPage } from '../../hooks';
+import images from '../../assets/importImages';
 
 export const FeedPage = () => {
     const navigator = useNavigate();
@@ -27,7 +28,7 @@ export const FeedPage = () => {
 
     return (
         <FeedContainerStyled>
-            {recipes.slice(0, 9).map((recipe, i) => (
+            {recipes.slice(65, 71).map((recipe, i) => (
                 <RecipeCardStyled
                     onClick={() => {
                         goToRecipeDetailPage(navigator, recipe.id);
@@ -39,7 +40,8 @@ export const FeedPage = () => {
                         src={recipe.imageUrl}
                         onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = `https://picsum.photos/seed/${i}/200/200`;
+                            // e.target.src = `https://picsum.photos/seed/${i}/200/200`;
+                            e.target.src = images.genericImage;
                         }}
                     />
                     <h3>{recipe.title}</h3>

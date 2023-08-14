@@ -187,7 +187,7 @@ Clique [aqui](https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro) 
     };
 
     export const goToRecipeDetailPage = (navigator, id) => {
-        navigator(`/recipe/:${id}`);
+        navigator(`/recipe/${id}`);
     };
 
     export const goToAddRecipePage = (navigator) => {
