@@ -16,7 +16,7 @@ Clique [aqui](cookenu-smoky.vercel.app) para conferir o resultado final!
     <img src="https://skillicons.dev/icons?i=react,js,styledcomponents,git,github,figma" style="height: 25px;"/>
 </p>
 
-<h1 align="center"> Processo de Desenvolvimento </h1>
+## Processo de Desenvolvimento
 
 -   [1. Resumo do Projeto](#1-resumo-do-projeto)
 -   [2. Fluxograma de Telas](#2-fluxograma-de-telas)
@@ -42,12 +42,13 @@ Clique [aqui](cookenu-smoky.vercel.app) para conferir o resultado final!
 
 Cookenu é um projeto proposto pela Labenu com o objetivo de revisar o módulo de React com integração de APIs, utilização de Design System e aplicação de Rotas.
 
--   A aplicação consiste em um site de receitas com as seguintes telas:
-    -   Login;
-    -   Cadastro;
-    -   Lista de Receitas;
-    -   Detalhes da Receita;
-    -   Adicionar Receita;
+A aplicação consiste em um site de receitas com as seguintes telas:
+
+-   Login;
+-   Cadastro;
+-   Lista de Receitas;
+-   Detalhes da Receita;
+-   Adicionar Receita;
 
 ## 2. Fluxograma de Telas
 
