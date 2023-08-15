@@ -83,12 +83,14 @@ export const RecipeDetailPage = () => {
                                 <ImageDetails
                                     src={recipe.imageUrl}
                                     onError={(e) => {
-                                        e.target.src = images.genericImage;
+                                        // e.target.src = images.genericImage;
+                                        e.target.src =
+                                            'https://cdn.pixabay.com/photo/2017/12/29/19/37/food-3048440_1280.jpg';
                                     }}
                                 />
                             </Center>
                             <Center mt="6" spacing="3">
-                                <Heading size="md">
+                                <Heading p="0.1vh 3vh" size="md">
                                     {recipe.title.charAt(0).toUpperCase() +
                                         recipe.title.slice(1).toLowerCase()}
                                 </Heading>

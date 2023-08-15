@@ -17,7 +17,6 @@ import {
 } from '@chakra-ui/react';
 import { useProtectPage } from '../../hooks';
 import { Background } from '../../components';
-import images from '../../assets/importImages';
 
 export const FeedPage = () => {
     const navigator = useNavigate();
@@ -38,7 +37,8 @@ export const FeedPage = () => {
     return (
         <Background>
             <FeedContainerStyled>
-                {recipes.slice(65, 71).map((recipe, i) => (
+                {/* {recipes.slice(65, 71).map((recipe, i) => ( */}
+                {recipes.map((recipe, i) => (
                     <RecipeCardStyled
                         onClick={() => {
                             goToRecipeDetailPage(navigator, recipe.id);
@@ -53,7 +53,9 @@ export const FeedPage = () => {
                                         borderRadius="lg"
                                         h="25vh"
                                         onError={(e) => {
-                                            e.target.src = images.genericImage;
+                                            // e.target.src = images.genericImage;
+                                            e.target.src =
+                                                'https://cdn.pixabay.com/photo/2017/12/29/19/37/food-3048440_1280.jpg';
                                         }}
                                     />
                                 </Center>

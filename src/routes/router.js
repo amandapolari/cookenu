@@ -18,7 +18,7 @@ export const Router = () => {
                 <Route path="/add-recipe" element={<AddRecipePage />} />
                 <Route path="/feed" element={<FeedPage />} />
                 <Route
-                    path="/login"
+                    path="/"
                     element={
                         <LoginPage
                             isLoggedIn={isLoggedIn}

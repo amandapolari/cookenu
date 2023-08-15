@@ -20,6 +20,7 @@
 -   [16. Adicionando receita](#16-adicionando-receita)
 -   [17. Página de Detalhes](#17-página-de-detalhes)
 -   [18. Logout e Proteção de Páginas](#18-logout-e-proteção-de-páginas)
+-   [19. Hospedagem](#19-hospedagem)
 
 ## 1. Resumo do Projeto
 
@@ -1062,3 +1063,22 @@ export const useProtectPage = (navigator) => {
 ```
 
 Importei esse hook na página de `feed` e `adicionar receita`
+
+## 19. Hospedagem
+
+Decidi hospedar o projeto este projeto na plataforma [Vercel](https://vercel.com/)
+
+### Procedimento:
+
+1. Criei um conta na [Vercel](https://vercel.com/) e fiz login pelo Github;
+
+2. No meu repositório local instalei a Vercel globalmente com o seguinte comando:
+
+    ```
+    npm install -g vercel
+    ```
+
+3. Existem duas possibilidades de implementação, escolhi fazer pela _Interface da Vercel_ da seguinte forma:
+    - Na página inicial da Vercel, clique no botão "Import Project".
+    - Selecione a pasta do seu projeto React.
+    - Clique em "Deploy" para implantar o projeto.
