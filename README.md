@@ -37,10 +37,13 @@ Clique [aqui](cookenu-smoky.vercel.app) para conferir o resultado final!
 -   [17. Página de Detalhes](#17-página-de-detalhes)
 -   [18. Logout e Proteção de Páginas](#18-logout-e-proteção-de-páginas)
 -   [19. Hospedagem](#19-hospedagem)
+-   [20. Tecnologias e Ferramentas Utilizadas](#20-tecnologias-e-ferramentas-utilizadas)
 
 ## 1. Resumo do Projeto
 
 Cookenu é um projeto proposto pela Labenu com o objetivo de revisar o módulo de React com integração de APIs, utilização de Design System e aplicação de Rotas.
+
+### Divisão de Telas
 
 A aplicação consiste em um site de receitas com as seguintes telas:
 
@@ -49,6 +52,14 @@ A aplicação consiste em um site de receitas com as seguintes telas:
 -   Lista de Receitas;
 -   Detalhes da Receita;
 -   Adicionar Receita;
+
+### Recursos
+
+-   Autenticação de usuários: Registro e login seguros para acesso.
+-   Feed de Receitas: Uma seção para os usuários explorarem diversas receitas.
+-   Adição de Receitas: Os utilizadores podem contribuir com suas receitas, incluindo título, descrição e imagem.
+-   Detalhes das Receitas: Visualização detalhada de cada receita, com título, imagem e descrição.
+-   Proteção de Páginas: Apenas utilizadores autenticados podem aceder a certas áreas.
 
 ## 2. Fluxograma de Telas
 
@@ -1099,3 +1110,12 @@ Decidi hospedar o projeto este projeto na plataforma [Vercel](https://vercel.com
     - Na página inicial da Vercel, clique no botão "Import Project".
     - Selecione a pasta do seu projeto React.
     - Clique em "Deploy" para implantar o projeto.
+
+## 20. Tecnologias e Ferramentas Utilizadas
+
+-   React: Biblioteca JavaScript para construção de interfaces de usuário.
+-   Styled Components: Estilização de componentes com CSS-in-JS.
+-   Chakra-UI: Framework de design responsivo.
+-   React Router: Gerenciamento de rotas na aplicação.
+-   Axios: Cliente HTTP para requisições à API.
+-   API Cookenu: Integração com uma API externa para dados de receitas.
