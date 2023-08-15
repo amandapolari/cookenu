@@ -6,6 +6,7 @@ import {
     EmailInput,
     PasswordInput,
     NameInput,
+    Background,
 } from '../../components';
 
 import { Button, Center, FormLabel } from '@chakra-ui/react';
@@ -76,39 +77,41 @@ export const SignupPage = () => {
     };
 
     return (
-        <CenteredPageContainer>
-            <FormContainer>
-                <form onSubmit={onSubmit}>
-                    <Center>
-                        <FormLabel
-                            fontFamily="Lobster, cursive"
-                            fontSize="3em"
-                            color="cinza.500"
-                            direction="collumn"
-                        >
-                            SignUp{' '}
-                        </FormLabel>
-                    </Center>
-                    <NameInput
-                        value={form.name}
-                        onChange={onChangeInputs}
-                        isValid={isNameValid}
-                    />
-                    <EmailInput
-                        value={form.email}
-                        onChange={onChangeInputs}
-                        isValid={isEmailValid}
-                    />
-                    <PasswordInput
-                        value={form.senha}
-                        onChange={onChangeInputs}
-                        isValid={isPasswordValid}
-                    />
-                    <Button color="cinza.500" type="submit" variant="form">
-                        Cadastrar
-                    </Button>
-                </form>
-            </FormContainer>
-        </CenteredPageContainer>
+        <Background>
+            <CenteredPageContainer>
+                <FormContainer>
+                    <form onSubmit={onSubmit}>
+                        <Center>
+                            <FormLabel
+                                fontFamily="Lobster, cursive"
+                                fontSize="3em"
+                                color="cinza.500"
+                                direction="collumn"
+                            >
+                                SignUp{' '}
+                            </FormLabel>
+                        </Center>
+                        <NameInput
+                            value={form.name}
+                            onChange={onChangeInputs}
+                            isValid={isNameValid}
+                        />
+                        <EmailInput
+                            value={form.email}
+                            onChange={onChangeInputs}
+                            isValid={isEmailValid}
+                        />
+                        <PasswordInput
+                            value={form.senha}
+                            onChange={onChangeInputs}
+                            isValid={isPasswordValid}
+                        />
+                        <Button color="cinza.500" type="submit" variant="form">
+                            Cadastrar
+                        </Button>
+                    </form>
+                </FormContainer>
+            </CenteredPageContainer>
+        </Background>
     );
 };

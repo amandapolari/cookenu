@@ -1,14 +1,22 @@
 import { useEffect, useState } from 'react';
-import { FeedContainerStyled, ImgRecipe, RecipeCardStyled } from './style';
+import { FeedContainerStyled, RecipeCardStyled } from './style';
 import { ListRecipes } from '../../constants';
 import { useNavigate } from 'react-router-dom';
 import {
     goToRecipeDetailPage,
     goToAddRecipePage,
 } from '../../routes/coordinator';
-import { Button } from '@chakra-ui/react';
+import {
+    Button,
+    Card,
+    CardBody,
+    Center,
+    Heading,
+    Image,
+    Stack,
+} from '@chakra-ui/react';
 import { useProtectPage } from '../../hooks';
-import images from '../../assets/importImages';
+import { Background } from '../../components';
 
 export const FeedPage = () => {
     const navigator = useNavigate();
@@ -27,34 +35,43 @@ export const FeedPage = () => {
     }, []);
 
     return (
-        <FeedContainerStyled>
-            {recipes.slice(65, 71).map((recipe, i) => (
-                <RecipeCardStyled
-                    onClick={() => {
-                        goToRecipeDetailPage(navigator, recipe.id);
-                    }}
-                    key={i}
-                >
-                    <ImgRecipe
-                        alt="imagem da receita"
-                        src={recipe.imageUrl}
-                        onError={(e) => {
-                            e.target.onerror = null;
-                            // e.target.src = `https://picsum.photos/seed/${i}/200/200`;
-                            e.target.src = images.genericImage;
+        <Background>
+            <FeedContainerStyled>
+                {recipes.slice(65, 71).map((recipe, i) => (
+                    <RecipeCardStyled
+                        onClick={() => {
+                            goToRecipeDetailPage(navigator, recipe.id);
                         }}
-                    />
-                    <h3>{recipe.title}</h3>
-                </RecipeCardStyled>
-            ))}
-            <Button
-                variant="add"
-                onClick={() => {
-                    goToAddRecipePage(navigator);
-                }}
-            >
-                +
-            </Button>
-        </FeedContainerStyled>
+                        key={i}
+                    >
+                        <Card mt="2" spacing="0" maxW="sm">
+                            <CardBody>
+                                <Center>
+                                    <Image
+                                        src={recipe.imageUrl}
+                                        borderRadius="lg"
+                                        h="25vh"
+                                    />
+                                </Center>
+                                <Stack mt="6" spacing="3">
+                                    <Heading size="md">
+                                        {recipe.title.charAt(0).toUpperCase() +
+                                            recipe.title.slice(1).toLowerCase()}
+                                    </Heading>
+                                </Stack>
+                            </CardBody>
+                        </Card>
+                    </RecipeCardStyled>
+                ))}
+                <Button
+                    variant="add"
+                    onClick={() => {
+                        goToAddRecipePage(navigator);
+                    }}
+                >
+                    +
+                </Button>
+            </FeedContainerStyled>
+        </Background>
     );
 };

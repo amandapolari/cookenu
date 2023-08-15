@@ -6,6 +6,7 @@ import {
     DescriptionTextarea,
     ImageInput,
     TitleInput,
+    Background,
 } from '../../components';
 
 import { Button, Center, FormLabel } from '@chakra-ui/react';
@@ -58,39 +59,41 @@ export const AddRecipePage = () => {
     };
 
     return (
-        <CenteredPageContainer>
-            <FormContainer>
-                <form onSubmit={onSubmit}>
-                    <Center>
-                        <FormLabel
-                            fontFamily="Lobster, cursive"
-                            fontSize="1.8em"
-                            color="cinza.500"
-                            direction="collumn"
-                        >
-                            Adicionar Nova Receita
-                        </FormLabel>
-                    </Center>
-                    <TitleInput
-                        value={form.title}
-                        onChange={onChangeInputs}
-                        isValid={isTitleValid}
-                    />
-                    <DescriptionTextarea
-                        value={form.description}
-                        onChange={onChangeInputs}
-                        isValid={true}
-                    />
-                    <ImageInput
-                        value={form.image}
-                        onChange={onChangeInputs}
-                        isValid={isUrlValid}
-                    />
-                    <Button color="cinza.500" type="submit" variant="form">
-                        Adicionar
-                    </Button>
-                </form>
-            </FormContainer>
-        </CenteredPageContainer>
+        <Background>
+            <CenteredPageContainer>
+                <FormContainer>
+                    <form onSubmit={onSubmit}>
+                        <Center>
+                            <FormLabel
+                                fontFamily="Lobster, cursive"
+                                fontSize="1.8em"
+                                color="cinza.500"
+                                direction="collumn"
+                            >
+                                Adicionar Nova Receita
+                            </FormLabel>
+                        </Center>
+                        <TitleInput
+                            value={form.title}
+                            onChange={onChangeInputs}
+                            isValid={isTitleValid}
+                        />
+                        <DescriptionTextarea
+                            value={form.description}
+                            onChange={onChangeInputs}
+                            isValid={true}
+                        />
+                        <ImageInput
+                            value={form.image}
+                            onChange={onChangeInputs}
+                            isValid={isUrlValid}
+                        />
+                        <Button color="cinza.500" type="submit" variant="form">
+                            Adicionar
+                        </Button>
+                    </form>
+                </FormContainer>
+            </CenteredPageContainer>
+        </Background>
     );
 };

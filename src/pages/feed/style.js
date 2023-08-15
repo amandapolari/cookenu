@@ -13,7 +13,6 @@ export const FeedContainerStyled = styled.div`
 `;
 
 export const RecipeCardStyled = styled.div`
-    /* border: 2px solid black; */
     width: 20vw;
     transition: 0.5s;
     &:hover {

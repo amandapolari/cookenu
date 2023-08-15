@@ -16,12 +16,23 @@ export const Image = styled.img`
     }
 `;
 
+export const ImageDetails = styled.img`
+    border-radius: 10px;
+    height: auto;
+    max-height: 85%;
+    max-width: 85%;
+    object-fit: contain;
+    @media (max-width: 600px) {
+        width: auto;
+        min-width: 40vw;
+        max-width: 90vw;
+    }
+`;
+
 export const CenteredContainer = styled.div`
-    height: 90vh;
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: lightgrey;
     padding: 3vh 30vh;
 `;
 
@@ -32,7 +43,7 @@ export const Description = styled.p`
 
 export const ContainerDescription = styled.div`
     overflow-y: auto;
-    height: 30vh;
+    height: 25vh;
 `;
 
 export const Title = styled.h1`

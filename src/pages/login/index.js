@@ -5,6 +5,7 @@ import {
     FormContainer,
     EmailInput,
     PasswordInput,
+    Background,
 } from '../../components';
 
 import { goToSignupPage, goToFeedPage } from '../../routes/coordinator';
@@ -40,7 +41,6 @@ export const LoginPage = ({ setIsLoggedIn }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(form);
         setIsEmailValid(validateEmail(form.email));
         setIsPasswordValid(validatePassword(form.senha));
         if (isEmailValid === true && isPasswordValid === true) {
@@ -63,51 +63,53 @@ export const LoginPage = ({ setIsLoggedIn }) => {
     };
 
     return (
-        <CenteredPageContainer>
-            <FormContainer>
-                <form onSubmit={onSubmit}>
-                    <Center>
-                        <FormLabel
-                            fontFamily="Lobster, cursive"
-                            fontSize="3em"
-                            color="cinza.500"
-                            direction="collumn"
-                        >
-                            Login{' '}
-                        </FormLabel>
-                    </Center>
-                    <EmailInput
-                        value={form.email}
-                        onChange={onChangeInputs}
-                        isValid={isEmailValid}
-                    />
-                    <PasswordInput
-                        value={form.senha}
-                        onChange={onChangeInputs}
-                        isValid={isPasswordValid}
-                    />
+        <Background>
+            <CenteredPageContainer>
+                <FormContainer>
+                    <form onSubmit={onSubmit}>
+                        <Center>
+                            <FormLabel
+                                fontFamily="Lobster, cursive"
+                                fontSize="3em"
+                                color="cinza.500"
+                                direction="collumn"
+                            >
+                                Login{' '}
+                            </FormLabel>
+                        </Center>
+                        <EmailInput
+                            value={form.email}
+                            onChange={onChangeInputs}
+                            isValid={isEmailValid}
+                        />
+                        <PasswordInput
+                            value={form.senha}
+                            onChange={onChangeInputs}
+                            isValid={isPasswordValid}
+                        />
 
-                    <Button color="cinza.500" type="submit" variant="form">
-                        Enviar
-                    </Button>
-                    <Center>
-                        <Button
-                            onClick={() => {
-                                goToSignupPage(navigator);
-                            }}
-                            variant="link"
-                            color="yellow.500"
-                            _hover={{
-                                color: 'laranja.500',
-                                transition: 'background 0.3s ease-in-out',
-                                textDecoration: 'underline',
-                            }}
-                        >
-                            Não tem cadastro? Cadastre-se!
+                        <Button color="cinza.500" type="submit" variant="form">
+                            Enviar
                         </Button>
-                    </Center>
-                </form>
-            </FormContainer>
-        </CenteredPageContainer>
+                        <Center>
+                            <Button
+                                onClick={() => {
+                                    goToSignupPage(navigator);
+                                }}
+                                variant="link"
+                                color="yellow.500"
+                                _hover={{
+                                    color: 'laranja.500',
+                                    transition: 'background 0.3s ease-in-out',
+                                    textDecoration: 'underline',
+                                }}
+                            >
+                                Não tem cadastro? Cadastre-se!
+                            </Button>
+                        </Center>
+                    </form>
+                </FormContainer>
+            </CenteredPageContainer>
+        </Background>
     );
 };
