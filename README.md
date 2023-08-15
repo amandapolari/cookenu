@@ -1,6 +1,22 @@
-# Projeto Cookenu
+<h1 align="center"> Projeto Cookenu </h1>
 
-## Processo de Desenvolvimento
+<div align="center">
+
+<!-- ![meu-gif](./src/media-readme/video-desktop-lp.gif) -->
+
+Clique [aqui](cookenu-smoky.vercel.app) para conferir o resultado final!
+
+</div>
+
+<p align="center"><strong>Status do Projeto:<br></strong> <i>Concluído</i> ✔</p>
+
+<p align="center">
+<span><strong>Tecnologias e Ferramentas Utilizadas:</strong></span>
+<br>
+    <img src="https://skillicons.dev/icons?i=react,js,styledcomponents,git,github,figma" style="height: 25px;"/>
+</p>
+
+<h1 align="center"> Processo de Desenvolvimento </h1>
 
 -   [1. Resumo do Projeto](#1-resumo-do-projeto)
 -   [2. Fluxograma de Telas](#2-fluxograma-de-telas)
