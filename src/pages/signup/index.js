@@ -52,7 +52,7 @@ export const SignupPage = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(form);
+        // console.log(form);
         setIsEmailValid(validateEmail(form.email));
         setIsPasswordValid(validatePassword(form.senha));
         setIsNameValid(validateName(form.name));

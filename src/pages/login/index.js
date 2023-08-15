@@ -24,6 +24,7 @@ export const LoginPage = ({ setIsLoggedIn }) => {
 
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
+    const [messagePassword, setMessagePassword] = useState();
 
     const navigator = useNavigate();
 
@@ -43,9 +44,6 @@ export const LoginPage = ({ setIsLoggedIn }) => {
         e.preventDefault();
         setIsEmailValid(validateEmail(form.email));
         setIsPasswordValid(validatePassword(form.senha));
-        if (isEmailValid === true && isPasswordValid === true) {
-            clearInputs();
-        }
         try {
             const { token } =
                 isEmailValid &&
@@ -55,10 +53,24 @@ export const LoginPage = ({ setIsLoggedIn }) => {
                     password: form.senha,
                 }));
             localStorage.setItem('cookenu.token', token);
+            if (isEmailValid === true && isPasswordValid === true) {
+                clearInputs();
+            }
             setIsLoggedIn(true);
             goToFeedPage(navigator);
         } catch (e) {
-            console.log(e.response.data.message);
+            const message = e.response.data.message;
+            console.log(message);
+            if (message === 'Password incorreto') {
+                setMessagePassword('Senha Incorreta!');
+                setIsPasswordValid(false);
+            }
+            if (message === 'Email não cadastrado') {
+                setMessagePassword(
+                    'Sua senha precisa de ao menos uma letra maiúscula, uma letra minúscula, um caracter especial e um número.'
+                );
+                setIsPasswordValid(false);
+            }
         }
     };
 
@@ -86,6 +98,7 @@ export const LoginPage = ({ setIsLoggedIn }) => {
                             value={form.senha}
                             onChange={onChangeInputs}
                             isValid={isPasswordValid}
+                            message={messagePassword}
                         />
 
                         <Button color="cinza.500" type="submit" variant="form">
