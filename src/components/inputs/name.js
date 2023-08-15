@@ -10,8 +10,8 @@ export const NameInput = ({ isValid, value, onChange }) => {
                 onChange={onChange}
             />
             {!isValid ? (
-                <Center>
-                    <FormErrorMessage as="p">
+                <Center mb="1vh">
+                    <FormErrorMessage textAlign="center" as="p">
                         O nome deve ter ao menos 2 caracteres
                     </FormErrorMessage>
                 </Center>

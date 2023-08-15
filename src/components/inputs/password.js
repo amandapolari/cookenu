@@ -6,11 +6,11 @@ import {
     Button,
     InputGroup,
     InputRightElement,
-    Center,
+    Box,
 } from '@chakra-ui/react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-export const PasswordInput = ({ isValid, value, onChange, message }) => {
+export const PasswordInput = ({ isValid, value, onChange }) => {
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
 
@@ -37,13 +37,12 @@ export const PasswordInput = ({ isValid, value, onChange, message }) => {
                 </InputRightElement>
             </InputGroup>
             {!isValid ? (
-                <Center>
-                    <FormErrorMessage as="p">
-                        {message
-                            ? message
-                            : 'Sua senha precisa de ao menos uma letra maiúscula, uma letra minúscula, um caracter especial e um número.'}
-                    </FormErrorMessage>
-                </Center>
+                <FormErrorMessage as="p">
+                <Box textAlign="center" m="auto">
+                    Sua senha precisa de pelo menos uma letra maiúscula, uma
+                    letra minúscula, um caractere especial e um número.
+                </Box>
+            </FormErrorMessage>
             ) : (
                 ''
             )}

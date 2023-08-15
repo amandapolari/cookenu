@@ -10,7 +10,7 @@ import {
 
 import { goToSignupPage, goToFeedPage } from '../../routes/coordinator';
 
-import { Button, Center, FormLabel } from '@chakra-ui/react';
+import { Alert, AlertIcon, Button, Center, FormLabel } from '@chakra-ui/react';
 import { validateEmail, validatePassword } from '../../constants';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,10 +24,8 @@ export const LoginPage = ({ setIsLoggedIn }) => {
 
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
-    // const [isPasswordError, setIsPasswordError] = useState(true);
-    // const [isEmailError, setIsEmailError] = useState(true);
-    const [messagePassword, setMessagePassword] = useState();
-    const [messageEmail, setMessageEmail] = useState();
+    const [userNotFound, setUserNotFound] = useState(false);
+    const [userNotFoundMessage, setUserNotFoundMessage] = useState();
 
     const navigator = useNavigate();
 
@@ -35,12 +33,14 @@ export const LoginPage = ({ setIsLoggedIn }) => {
         if (form.email) {
             setIsEmailValid(validateEmail(form.email));
         }
+        setUserNotFound(false);
     }, [form.email]);
 
     useEffect(() => {
         if (form.senha) {
             setIsPasswordValid(validatePassword(form.senha));
         }
+        setUserNotFound(false);
     }, [form.senha]);
 
     const onSubmit = async (e) => {
@@ -63,17 +63,14 @@ export const LoginPage = ({ setIsLoggedIn }) => {
             goToFeedPage(navigator);
         } catch (e) {
             const message = e.response.data.message;
-            console.log(message);
-            // SENHA
-            if (message === 'Password incorreto') {
-                setMessagePassword('Senha Incorreta!');
-                setIsPasswordValid(false);
-            }
-
-            // EMAIL
-            if (message === 'Email não cadastrado') {
-                setMessageEmail('Email incorreto ou não cadastrado');
-                setIsEmailValid(false);
+            if (
+                message === 'Password incorreto' ||
+                message === 'Email não cadastrado'
+            ) {
+                setUserNotFoundMessage(
+                    'Usuário não encontrado. Verifique se a senha e o e-mail estão corretos'
+                );
+                setUserNotFound(true);
             }
         }
     };
@@ -97,15 +94,27 @@ export const LoginPage = ({ setIsLoggedIn }) => {
                             value={form.email}
                             onChange={onChangeInputs}
                             isValid={isEmailValid}
-                            message={messageEmail}
                         />
                         <PasswordInput
                             value={form.senha}
                             onChange={onChangeInputs}
                             isValid={isPasswordValid}
-                            message={messagePassword}
                         />
-
+                        {userNotFound ? (
+                            <Center>
+                                <Alert
+                                    mb="1vh"
+                                    borderRadius="5px"
+                                    status="error"
+                                    fontSize="1.8vh"
+                                >
+                                    <AlertIcon />
+                                    {userNotFoundMessage}
+                                </Alert>
+                            </Center>
+                        ) : (
+                            ''
+                        )}
                         <Button color="cinza.500" type="submit" variant="form">
                             Enviar
                         </Button>
