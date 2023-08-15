@@ -199,9 +199,9 @@ Clique [aqui](https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro) 
 
 ### Instalação:
 
-        ```
-        npm install styled-components@latest
-        ```
+```
+npm install styled-components@latest
+```
 
 ## 9. Chakra-UI
 
@@ -215,19 +215,19 @@ npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 
 Em `App.js` importei o `ChakraProvider` e englobei todo meu conteúdo com ele:
 
-    ```
-    (...)
-    import { ChakraProvider } from '@chakra-ui/react'
-    (...)
-    const App = () => {
-        return (
-            <ChakraProvider>
-                <Router />
-            </ChakraProvider>
-        );
-    };
-    (...)
-    ```
+```
+(...)
+import { ChakraProvider } from '@chakra-ui/react'
+(...)
+const App = () => {
+    return (
+        <ChakraProvider>
+            <Router />
+        </ChakraProvider>
+    );
+};
+(...)
+```
 
 ### Utilizando Theme
 
@@ -777,8 +777,6 @@ Em `constants` criei a requisição para a página de Adicionar Receitas
 
 ```
 export const AddRecipe = async (body) => {
-    //uso pra ver o que o método post recebe
-    // axios.post()
     const { data } = await axios.post(`${BASE_URL}/recipe`, body, {
         headers: {
             Authorization: localStorage.getItem('cookenu.token'),
