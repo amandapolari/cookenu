@@ -82,6 +82,9 @@ export const RecipeDetailPage = () => {
                             <Center>
                                 <ImageDetails
                                     src={recipe.imageUrl}
+                                    onError={(e) => {
+                                        e.target.src = images.genericImage;
+                                    }}
                                 />
                             </Center>
                             <Center mt="6" spacing="3">

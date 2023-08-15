@@ -19,6 +19,7 @@ export const ListRecipes = async () => {
             Authorization: localStorage.getItem('cookenu.token'),
         },
     });
+    // console.log(data);
     return data;
 };
 
@@ -37,7 +38,7 @@ export const GetRecipe = async (id) => {
             Authorization: localStorage.getItem('cookenu.token'),
         },
     });
-    console.log('ANALISAR', response);
+    // console.log('ANALISAR', response);
     return response;
 };
 
@@ -54,5 +55,7 @@ export const validateName = (name) => /.{2,}/.test(name);
 
 export const validateTitle = (title) => /.{3,}/.test(title);
 
-export const validateUrl = (url) => /https[s]?:\/\/[a-zA-Z]+.com/.test(url);
+export const validateUrl = (url) =>
+    /^https:\/\/[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/\S*)?$/.test(url);
+
 // -----------------

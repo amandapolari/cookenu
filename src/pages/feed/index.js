@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { useProtectPage } from '../../hooks';
 import { Background } from '../../components';
+import images from '../../assets/importImages';
 
 export const FeedPage = () => {
     const navigator = useNavigate();
@@ -51,6 +52,9 @@ export const FeedPage = () => {
                                         src={recipe.imageUrl}
                                         borderRadius="lg"
                                         h="25vh"
+                                        onError={(e) => {
+                                            e.target.src = images.genericImage;
+                                        }}
                                     />
                                 </Center>
                                 <Stack mt="6" spacing="3">
