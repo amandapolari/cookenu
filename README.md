@@ -23,14 +23,14 @@
 
 ## 1. Resumo do Projeto
 
--   Cookenu é um projeto de revisão do módulo de react com APIs, design systems e routes
+Cookenu é um projeto proposto pela Labenu com o objetivo de revisar o módulo de React com integração de APIs, utilização de Design System e aplicação de Rotas.
 
 -   A aplicação consiste em um site de receitas com as seguintes telas:
-    -   Login
-    -   Cadastro
-    -   Lista de Receitas
-    -   Detalhes da Receita
-    -   Adicionar Receita
+    -   Login;
+    -   Cadastro;
+    -   Lista de Receitas;
+    -   Detalhes da Receita;
+    -   Adicionar Receita;
 
 ## 2. Fluxograma de Telas
 
@@ -38,29 +38,29 @@
 
 ## 3. Wireframe de Telas
 
-### Tela - Login:
+### Tela de Login:
 
 ![Tela - Login](./src/images/images-readme/image-1.png)
 
-### Tela - Cadastro:
+### Tela de Cadastro:
 
 ![Tela - Cadastro](./src/images/images-readme/image-2.png)
 
-### Tela - Lista de Receitas:
+### Tela de Lista de Receitas:
 
 ![Alt text](./src/images/images-readme/image-3.png)
 
-### Tela - Detalhes da Receita:
+### Tela de Detalhes da Receita:
 
 ![Alt text](./src/images/images-readme/image-4.png)
 
-### Tela - Adicionar Receita:
+### Tela de Adicionar Receita:
 
 ![Alt text](./src/images/images-readme/image-5.png)
 
 ## 4. API utilizada:
 
-Clique [aqui](https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro) para ser direcionado para a documentação da API Cookenu utilizada no projeto
+Clique [aqui](https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro) para ser direcionado para a documentação da API Cookenu utilizada no projeto.
 
 ## 5. Configurações: Create React App
 
