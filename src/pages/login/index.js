@@ -24,7 +24,10 @@ export const LoginPage = ({ setIsLoggedIn }) => {
 
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
+    // const [isPasswordError, setIsPasswordError] = useState(true);
+    // const [isEmailError, setIsEmailError] = useState(true);
     const [messagePassword, setMessagePassword] = useState();
+    const [messageEmail, setMessageEmail] = useState();
 
     const navigator = useNavigate();
 
@@ -61,15 +64,16 @@ export const LoginPage = ({ setIsLoggedIn }) => {
         } catch (e) {
             const message = e.response.data.message;
             console.log(message);
+            // SENHA
             if (message === 'Password incorreto') {
                 setMessagePassword('Senha Incorreta!');
                 setIsPasswordValid(false);
             }
+
+            // EMAIL
             if (message === 'Email não cadastrado') {
-                setMessagePassword(
-                    'Sua senha precisa de ao menos uma letra maiúscula, uma letra minúscula, um caracter especial e um número.'
-                );
-                setIsPasswordValid(false);
+                setMessageEmail('Email incorreto ou não cadastrado');
+                setIsEmailValid(false);
             }
         }
     };
@@ -93,6 +97,7 @@ export const LoginPage = ({ setIsLoggedIn }) => {
                             value={form.email}
                             onChange={onChangeInputs}
                             isValid={isEmailValid}
+                            message={messageEmail}
                         />
                         <PasswordInput
                             value={form.senha}

@@ -12,7 +12,6 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export const PasswordInput = ({ isValid, value, onChange, message }) => {
     const [show, setShow] = useState(false);
-
     const handleClick = () => setShow(!show);
 
     return (
@@ -40,10 +39,9 @@ export const PasswordInput = ({ isValid, value, onChange, message }) => {
             {!isValid ? (
                 <Center>
                     <FormErrorMessage as="p">
-                        {message}
-                        <br />
-                        Sua senha precisa de ao menos uma letra maiúscula, uma
-                        letra minúscula, um caracter especial e um número.
+                        {message
+                            ? message
+                            : 'Sua senha precisa de ao menos uma letra maiúscula, uma letra minúscula, um caracter especial e um número.'}
                     </FormErrorMessage>
                 </Center>
             ) : (

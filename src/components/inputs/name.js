@@ -1,4 +1,4 @@
-import { FormControl, Input, FormErrorMessage } from '@chakra-ui/react';
+import { FormControl, Input, FormErrorMessage, Center } from '@chakra-ui/react';
 
 export const NameInput = ({ isValid, value, onChange }) => {
     return (
@@ -10,9 +10,11 @@ export const NameInput = ({ isValid, value, onChange }) => {
                 onChange={onChange}
             />
             {!isValid ? (
-                <FormErrorMessage as="p">
-                    O nome deve ter ao menos 2 caracteres
-                </FormErrorMessage>
+                <Center>
+                    <FormErrorMessage as="p">
+                        O nome deve ter ao menos 2 caracteres
+                    </FormErrorMessage>
+                </Center>
             ) : (
                 ''
             )}

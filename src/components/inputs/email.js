@@ -1,6 +1,6 @@
-import { FormControl, Input, FormErrorMessage } from '@chakra-ui/react';
+import { FormControl, Input, FormErrorMessage, Center } from '@chakra-ui/react';
 
-export const EmailInput = ({ isValid, value, onChange }) => {
+export const EmailInput = ({ isValid, value, onChange, message }) => {
     return (
         <FormControl isInvalid={!isValid}>
             <Input
@@ -10,9 +10,13 @@ export const EmailInput = ({ isValid, value, onChange }) => {
                 onChange={onChange}
             />
             {!isValid ? (
-                <FormErrorMessage as="p">
-                    Por favor, digite um e-mail válido
-                </FormErrorMessage>
+                <Center>
+                    <FormErrorMessage as="p">
+                        {message
+                            ? message
+                            : 'Por favor, digite um e-mail válido'}
+                    </FormErrorMessage>
+                </Center>
             ) : (
                 ''
             )}
