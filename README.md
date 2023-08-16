@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<!-- ![meu-gif](./src/media-readme/video-desktop-lp.gif) -->
+![meu-gif](./src/images/images-readme/cookenu.gif)
 
 Clique [aqui](cookenu-smoky.vercel.app) para conferir o resultado final!
 
